@@ -2,10 +2,10 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
   ValidationArguments,
-} from "class-validator";
-import { CalculateMortgageDto } from "./calculate-mortgage.dto";
+} from 'class-validator';
+import { CalculateMortgageDto } from './calculate-mortgage.dto';
 
-@ValidatorConstraint({ name: "CustomMortgageValidator", async: false })
+@ValidatorConstraint({ name: 'CustomMortgageValidator', async: false })
 export class CalculateMortgageValidator
   implements ValidatorConstraintInterface
 {
@@ -17,8 +17,8 @@ export class CalculateMortgageValidator
 
     if (o.propertyPrice <= 500_000 && dpPct < 0.05) {
       errors.push({
-        field: "downPayment",
-        message: "Minimum 5% down payment required",
+        field: 'downPayment',
+        message: 'Minimum 5% down payment required',
       });
     } else if (o.propertyPrice <= 1_500_000) {
       const excess = o.propertyPrice - 500_000;
@@ -26,14 +26,14 @@ export class CalculateMortgageValidator
 
       if (dpPct < needed) {
         errors.push({
-          field: "downPayment",
+          field: 'downPayment',
           message: `Minimum down payment is 5% up to $500k and 10% on the excess — you need at least ${(needed * 100).toFixed(2)}%`,
         });
       }
     } else if (o.propertyPrice > 1_500_000 && dpPct < 0.2) {
       errors.push({
-        field: "downPayment",
-        message: "For homes over $1.5M, minimum 20% down is required",
+        field: 'downPayment',
+        message: 'For homes over $1.5M, minimum 20% down is required',
       });
     }
 
@@ -43,9 +43,9 @@ export class CalculateMortgageValidator
       o.amortizationPeriod > 25
     ) {
       errors.push({
-        field: "amortizationPeriod",
+        field: 'amortizationPeriod',
         message:
-          "For insured mortgages (down <20%), max amortization is 25 years unless first-time/new home",
+          'For insured mortgages (down <20%), max amortization is 25 years unless first-time/new home',
       });
     }
 
@@ -53,6 +53,6 @@ export class CalculateMortgageValidator
   }
 
   defaultMessage(args: ValidationArguments) {
-    return "Invalid mortgage values";
+    return 'Invalid mortgage values';
   }
 }

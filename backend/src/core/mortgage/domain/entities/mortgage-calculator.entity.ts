@@ -1,10 +1,10 @@
-import { UUID } from "node:crypto";
-import { IEntity } from "src/core/@common/domain/entity.interface";
+import { UUID } from 'node:crypto';
+import { IEntity } from 'src/core/@common/domain/entity.interface';
 
 export enum PaymentSchedule {
-  MONTHLY = "monthly",
-  BI_WEEKLY = "bi-weekly",
-  ACCELERATED_BI_WEEKLY = "accelerated-bi-weekly",
+  MONTHLY = 'monthly',
+  BI_WEEKLY = 'bi-weekly',
+  ACCELERATED_BI_WEEKLY = 'accelerated-bi-weekly',
 }
 
 export const PAYMENT_FREQUENCIES = {
@@ -22,9 +22,9 @@ export interface CMHCRates {
 }
 
 export const CMHC_RATES: CMHCRates = {
-  "5": 0.04,
-  "10": 0.031,
-  "15": 0.028,
+  '5': 0.04,
+  '10': 0.031,
+  '15': 0.028,
 };
 
 export interface IMortgageCalculatorProps extends IEntity {
@@ -171,13 +171,13 @@ export class MortgageCalculator implements IMortgageCalculatorProps {
 
     let applicableRate = 0;
     if (downPercentage < 5) {
-      throw new Error("Minimum down payment is 5% of the property price.");
+      throw new Error('Minimum down payment is 5% of the property price.');
     } else if (downPercentage < 10) {
-      applicableRate = CMHC_RATES["5"];
+      applicableRate = CMHC_RATES['5'];
     } else if (downPercentage < 15) {
-      applicableRate = CMHC_RATES["10"];
+      applicableRate = CMHC_RATES['10'];
     } else if (downPercentage < 20) {
-      applicableRate = CMHC_RATES["15"];
+      applicableRate = CMHC_RATES['15'];
     }
 
     const isRequired = downPercentage < 20;
@@ -207,6 +207,6 @@ export class MortgageCalculator implements IMortgageCalculatorProps {
         break;
     }
 
-    return date.toISOString().split("T")[0];
+    return date.toISOString().split('T')[0];
   }
 }
