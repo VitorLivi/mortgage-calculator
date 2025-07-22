@@ -1,0 +1,61 @@
+services:
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile.dev
+    container_name: mortgage-calculator-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front-end:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_API_BASE_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - mortgage-network
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: mortgage-calculator-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - CORS_ORIGIN=http://localhost:3000
+    networks:
+      - mortgage-network
+    restart: always
+
+  storybook:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile.dev
+    container_name: mortgage-calculator-storybook
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./front-end:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - mortgage-network
+    command: npm run storybook
+    restart: always
+
+networks:
+  mortgage-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+    driver: local
