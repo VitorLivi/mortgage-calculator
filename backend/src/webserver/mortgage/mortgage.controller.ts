@@ -4,15 +4,23 @@ import {
   Post,
   UsePipes,
   ValidationPipe,
-} from '@nestjs/common';
-import { CalculateMortgageDto } from 'src/core/mortgage/application/use-cases/calculate-mortgage/calculate-mortgage.dto';
-import { CalculateMortgage } from 'src/core/mortgage/application/use-cases/calculate-mortgage/calculate-mortgage.use-case';
+} from "@nestjs/common";
+import { ApiTags, ApiOperation, ApiResponse, ApiBody } from "@nestjs/swagger";
+import { CalculateMortgageDto } from "src/core/mortgage/application/use-cases/calculate-mortgage/calculate-mortgage.dto";
+import { CalculateMortgage } from "src/core/mortgage/application/use-cases/calculate-mortgage/calculate-mortgage.use-case";
 
-@Controller('mortgage')
+@ApiTags("Mortgage")
+@Controller("mortgage")
 export class MortgageController {
   constructor(private readonly calculateMortgageUseCase: CalculateMortgage) {}
 
-  @Post('calculate')
+  @Post("calculate")
+  @ApiOperation({ summary: "Calculate mortgage payment details" })
+  @ApiResponse({
+    status: 200,
+    description: "Successful mortgage calculation",
+  })
+  @ApiBody({ type: CalculateMortgageDto })
   @UsePipes(
     new ValidationPipe({
       whitelist: true,
@@ -22,7 +30,7 @@ export class MortgageController {
   )
   async calculateMortgage(
     @Body() calculateMortgageDto: CalculateMortgageDto,
-  ): Promise<ReturnType<CalculateMortgage['execute']>> {
+  ): Promise<ReturnType<CalculateMortgage["execute"]>> {
     return this.calculateMortgageUseCase.execute(calculateMortgageDto);
   }
 }

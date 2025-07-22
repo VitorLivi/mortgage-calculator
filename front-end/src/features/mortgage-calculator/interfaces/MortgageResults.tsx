@@ -4,6 +4,7 @@ import { formatCurrency } from "@/shared/utils/currency";
 import { InsuranceDetails } from "../interfaces/InsuranceDetails";
 import { PaymentBreakdownDetails } from "../interfaces/PaymentBreakdown";
 import { AmortizationScheduleDetails } from "../interfaces/AmortizationSchedule";
+import { formatDate } from "@/shared/utils/date";
 
 interface MortgageResultsProps {
   result: MortgageCalculationResult;
@@ -18,17 +19,6 @@ export const MortgageResults: React.FC<MortgageResultsProps> = ({
 }) => {
   const [showAmortizationSchedule, setShowAmortizationSchedule] =
     useState(false);
-
-  const formatDate = (date: Date | null) => {
-    if (!date) return "";
-    return new Intl.DateTimeFormat("en-CA", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(date);
-  };
 
   return (
     <div className="space-y-6">
@@ -81,7 +71,6 @@ export const MortgageResults: React.FC<MortgageResultsProps> = ({
 
       <InsuranceDetails cmhcInsurance={result.cmhcInsurance} />
       <PaymentBreakdownDetails paymentBreakdown={result.paymentBreakdown} />
-
       <AmortizationScheduleDetails
         changeVisibility={() =>
           setShowAmortizationSchedule(!showAmortizationSchedule)
