@@ -92,8 +92,11 @@ export const AmortizationScheduleDetails: React.FC<
         <div className="card-body">
           {availableYears.length > 1 && (
             <div className="mb-4">
-              <label className="form-label">View Year</label>
+              <label htmlFor="yearSelect" className="form-label">
+                View Year
+              </label>
               <select
+                id="yearSelect"
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(Number(e.target.value))}
                 className="form-input max-w-xs"

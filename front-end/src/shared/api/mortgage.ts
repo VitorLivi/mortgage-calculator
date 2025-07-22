@@ -2,7 +2,7 @@ import {
   MortgageCalculationResult,
   MortgageInput,
 } from "@/features/mortgage-calculator/types/mortgage";
-import api from "./axios";
+import api from "@/shared/api/axios";
 
 export async function calculateMortgage(
   data: MortgageInput

@@ -29,9 +29,11 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 }) => {
   return (
     <div
+      data-testid="loading-spinner-wrapper"
       className={clsx("flex flex-col items-center justify-center", className)}
     >
       <div
+        data-testid="loading-spinner"
         className={clsx(
           "animate-spin border-2 border-current border-t-transparent rounded-full",
           sizeClasses[size],
@@ -41,18 +43,25 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
         aria-label="Loading"
       />
       {text && (
-        <p className="mt-2 text-sm text-secondary-600 animate-pulse">{text}</p>
+        <p
+          data-testid="loading-spinner-text"
+          className="mt-2 text-sm text-secondary-600 animate-pulse"
+        >
+          {text}
+        </p>
       )}
     </div>
   );
 };
 
-// Alternative spinner with dots
 export const LoadingDots: React.FC<{ className?: string }> = ({
   className,
 }) => {
   return (
-    <div className={clsx("flex space-x-1", className)}>
+    <div
+      data-testid="loading-dots"
+      className={clsx("flex space-x-1", className)}
+    >
       <div className="w-2 h-2 bg-primary-600 rounded-full animate-bounce" />
       <div className="w-2 h-2 bg-primary-600 rounded-full animate-bounce delay-75" />
       <div className="w-2 h-2 bg-primary-600 rounded-full animate-bounce delay-150" />
@@ -60,7 +69,6 @@ export const LoadingDots: React.FC<{ className?: string }> = ({
   );
 };
 
-// Full page loading overlay
 export const LoadingOverlay: React.FC<{
   isVisible: boolean;
   text?: string;
@@ -68,7 +76,10 @@ export const LoadingOverlay: React.FC<{
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div
+      data-testid="loading-overlay"
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    >
       <div className="bg-white rounded-lg p-6 shadow-xl">
         <LoadingSpinner size="lg" text={text} />
       </div>
@@ -76,13 +87,15 @@ export const LoadingOverlay: React.FC<{
   );
 };
 
-// Skeleton loader for content
 export const SkeletonLoader: React.FC<{
   className?: string;
   lines?: number;
 }> = ({ className, lines = 3 }) => {
   return (
-    <div className={clsx("animate-pulse", className)}>
+    <div
+      data-testid="skeleton-loader"
+      className={clsx("animate-pulse", className)}
+    >
       {Array.from({ length: lines }).map((_, index) => (
         <div
           key={index}

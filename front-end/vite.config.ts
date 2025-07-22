@@ -30,8 +30,12 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "./src/test/setup.tsx",
-    css: true,
+    setupFiles: "./src/setupTests.ts",
+    include: ["src/**/*.test.ts?(x)"],
+    coverage: {
+      reporter: ["text", "html"],
+      exclude: ["node_modules", "src/setupTests.ts"],
+    },
   },
   server: {
     port: 3000,

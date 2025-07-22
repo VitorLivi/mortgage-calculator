@@ -13,34 +13,14 @@
       content="mortgage, calculator, CMHC, insurance, payments, real estate, finance"
     />
     <meta name="author" content="WorldSource Technical Assessment" />
-
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Theme color -->
     <meta name="theme-color" content="#3b82f6" />
 
-    <!-- Apple touch icon -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
 
     <title>Mortgage Calculator</title>
-
-    <!-- Preload critical resources -->
     <link rel="modulepreload" href="/src/main.tsx" />
 
-    <!-- Critical CSS inline (will be replaced by Vite in production) -->
     <style>
-      /* Critical CSS for above-the-fold content */
       html {
         font-family: "Inter", system-ui, -apple-system, sans-serif;
       }
@@ -53,7 +33,6 @@
         line-height: 1.6;
       }
 
-      /* Loading spinner styles */
       .loading-container {
         position: fixed;
         top: 0;
@@ -85,27 +64,21 @@
         }
       }
 
-      /* Hide loading once app is loaded */
       .app-loaded .loading-container {
         display: none;
       }
     </style>
   </head>
   <body>
-    <!-- Loading screen -->
     <div class="loading-container" id="loading">
       <div class="loading-spinner"></div>
     </div>
 
-    <!-- React root -->
     <div id="root"></div>
 
-    <!-- Main application script -->
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Remove loading screen once app is ready -->
     <script>
-      // Remove loading screen once React app is mounted
       window.addEventListener("load", function () {
         setTimeout(function () {
           document.body.classList.add("app-loaded");
