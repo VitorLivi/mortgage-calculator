@@ -1,4 +1,7 @@
-import { MortgageCalculationResult, MortgageInput } from "../types/mortgage";
+import {
+  MortgageCalculationResult,
+  MortgageInput,
+} from "@/features/mortgage-calculator/types/mortgage";
 import api from "./axios";
 
 export async function calculateMortgage(

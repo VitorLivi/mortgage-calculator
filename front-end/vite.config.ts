@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "./src"),
       "@/components": resolve(__dirname, "./src/shared/components"),
+      "@/interfaces": resolve(__dirname, "./src/shared/interfaces"),
       "@/utils": resolve(__dirname, "./src/shared/utils"),
       "@/hooks": resolve(__dirname, "./src/shared/hooks"),
       "@/types": resolve(__dirname, "./src/shared/types"),

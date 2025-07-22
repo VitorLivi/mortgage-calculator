@@ -6,12 +6,6 @@ export interface MortgageInput {
   paymentSchedule: PaymentSchedule;
 }
 
-export enum PaymentSchedule {
-  MONTHLY = "monthly",
-  BI_WEEKLY = "bi-weekly",
-  ACCELERATED_BI_WEEKLY = "accelerated-bi-weekly",
-}
-
 export interface MortgageCalculationResult {
   paymentAmount: number;
   totalInterest: number;
@@ -20,6 +14,12 @@ export interface MortgageCalculationResult {
   cmhcInsurance: CMHCInsurance;
   paymentBreakdown: PaymentBreakdown;
   amortizationSchedule: AmortizationEntry[];
+}
+
+export enum PaymentSchedule {
+  MONTHLY = "monthly",
+  BI_WEEKLY = "bi-weekly",
+  ACCELERATED_BI_WEEKLY = "accelerated-bi-weekly",
 }
 
 export interface AmortizationEntry {

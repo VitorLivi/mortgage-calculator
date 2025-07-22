@@ -38,6 +38,7 @@ const config: StorybookConfig = {
         alias: {
           "@": "/src",
           "@/components": "/src/shared/components",
+          "@/interfaces": "/src/shared/interfaces",
           "@/utils": "/src/shared/utils",
           "@/hooks": "/src/shared/hooks",
           "@/features": "/src/features",

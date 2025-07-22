@@ -60,6 +60,7 @@ const mortgageSchema = z
       ctx.addIssue({
         path: ["downPayment"],
         message: "Down payment cannot exceed property price",
+        code: "custom",
       });
     }
 
@@ -68,6 +69,7 @@ const mortgageSchema = z
         ctx.addIssue({
           path: ["downPayment"],
           message: "Minimum 5% down payment required",
+          code: "custom",
         });
       }
     } else if (propertyPrice <= 1_500_000) {
@@ -82,6 +84,7 @@ const mortgageSchema = z
           message: `Minimum down payment is 5% up to $500k and 10% on the excess — you need at least ${(
             needed * 100
           ).toFixed(2)}%`,
+          code: "custom",
         });
       }
     } else {
@@ -89,6 +92,7 @@ const mortgageSchema = z
         ctx.addIssue({
           path: ["downPayment"],
           message: "For homes over $1.5M, minimum 20% down is required",
+          code: "custom",
         });
       }
     }
@@ -99,6 +103,7 @@ const mortgageSchema = z
           path: ["amortizationPeriod"],
           message:
             "For insured mortgages (down <20%), max amortization is 25 years unless first-time/new home",
+          code: "custom",
         });
       }
     }
