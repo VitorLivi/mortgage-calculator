@@ -1,20 +1,20 @@
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "@/shared/components/Layout";
+import { Layout } from "@/shared/interfaces/Layout";
 import { LoadingSpinner } from "@/shared/components/LoadingSpinner";
 
 const MortgageCalculator = React.lazy(() =>
   import("@/features/mortgage-calculator/pages/MortgageCalculator").then(
     (module) => ({
       default: module.MortgageCalculator,
-    })
-  )
+    }),
+  ),
 );
 
 const NotFound = React.lazy(() =>
-  import("@/shared/components/NotFound").then((module) => ({
+  import("@/shared/interfaces/NotFound").then((module) => ({
     default: module.NotFound,
-  }))
+  })),
 );
 
 function App() {

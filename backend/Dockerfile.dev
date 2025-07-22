@@ -3,12 +3,14 @@ FROM node:24-alpine
 WORKDIR /app
 RUN apk add --no-cache bash
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
-RUN npm install && npm install -g nest-cli
+RUN npm install && npm install -g @nestjs/cli
+
 COPY . .
 
 ENV NODE_ENV=development
 
 EXPOSE 5000
+
 CMD ["npm", "run", "start:dev"]
