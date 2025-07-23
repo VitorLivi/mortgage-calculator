@@ -8,7 +8,7 @@ services:
       - "3000:3000"
     volumes:
       - ./front-end:/app
-      - node_modules:/app/node_modules
+      - node_modules_frontend:/app/node_modules
     environment:
       - NODE_ENV=development
       - VITE_API_BASE_URL=http://localhost:5000
@@ -58,7 +58,7 @@ networks:
     driver: bridge
 
 volumes:
-  node_modules:
+  node_modules_frontend:
     driver: local
   node_modules_backend:
     driver: local

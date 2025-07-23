@@ -87,7 +87,7 @@ export const AmortizationScheduleDetails: React.FC<
           </button>
         </div>
       </div>
-      )
+
       {showAmortizationSchedule && (
         <div className="card-body">
           {availableYears.length > 1 && (

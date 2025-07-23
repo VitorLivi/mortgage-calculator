@@ -12,9 +12,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "docker:build": "docker build -t mortgage-calculator-frontend .",
-    "docker:run": "docker run -p 3000:3000 mortgage-calculator-frontend"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
